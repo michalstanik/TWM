@@ -1,0 +1,73 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.489
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "TWM", "TWM.AngularClient\TWM\", "{FE2C30F2-CF4F-427D-B2C3-D93B06AD8785}"
+	ProjectSection(WebsiteProperties) = preProject
+		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
+		Debug.AspNetCompiler.VirtualPath = "/localhost_58947"
+		Debug.AspNetCompiler.PhysicalPath = "TWM.AngularClient\TWM\"
+		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58947\"
+		Debug.AspNetCompiler.Updateable = "true"
+		Debug.AspNetCompiler.ForceOverwrite = "true"
+		Debug.AspNetCompiler.FixedNames = "false"
+		Debug.AspNetCompiler.Debug = "True"
+		Release.AspNetCompiler.VirtualPath = "/localhost_58947"
+		Release.AspNetCompiler.PhysicalPath = "TWM.AngularClient\TWM\"
+		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58947\"
+		Release.AspNetCompiler.Updateable = "true"
+		Release.AspNetCompiler.ForceOverwrite = "true"
+		Release.AspNetCompiler.FixedNames = "false"
+		Release.AspNetCompiler.Debug = "False"
+		VWDPort = "58947"
+		SlnRelativePath = "TWM.AngularClient\TWM\"
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWM.Api", "TWM.Api\TWM.Api.csproj", "{D7C9B3D1-42BF-490B-850E-528DB228E00E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWM.IDP", "TWM.IDP\TWM.IDP.csproj", "{823F3981-D9BE-4717-B837-56FE3F179743}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TWM.Data.Domain", "TWM.Data.Domain\TWM.Data.Domain.csproj", "{E90785FF-9BB5-4FC8-8DC3-F4A76885D7C7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWM.Data", "TWM.Data\TWM.Data.csproj", "{12FF96A7-DDE4-44FE-B365-1FEFCC0BFEA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TWm.Business.Models", "TWm.Business.Models\TWm.Business.Models.csproj", "{138C65B3-D172-4717-877E-B87FD195BA43}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FE2C30F2-CF4F-427D-B2C3-D93B06AD8785}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2C30F2-CF4F-427D-B2C3-D93B06AD8785}.Release|Any CPU.ActiveCfg = Debug|Any CPU
+		{FE2C30F2-CF4F-427D-B2C3-D93B06AD8785}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{D7C9B3D1-42BF-490B-850E-528DB228E00E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7C9B3D1-42BF-490B-850E-528DB228E00E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7C9B3D1-42BF-490B-850E-528DB228E00E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7C9B3D1-42BF-490B-850E-528DB228E00E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{823F3981-D9BE-4717-B837-56FE3F179743}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{823F3981-D9BE-4717-B837-56FE3F179743}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{823F3981-D9BE-4717-B837-56FE3F179743}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{823F3981-D9BE-4717-B837-56FE3F179743}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E90785FF-9BB5-4FC8-8DC3-F4A76885D7C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E90785FF-9BB5-4FC8-8DC3-F4A76885D7C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E90785FF-9BB5-4FC8-8DC3-F4A76885D7C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E90785FF-9BB5-4FC8-8DC3-F4A76885D7C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12FF96A7-DDE4-44FE-B365-1FEFCC0BFEA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12FF96A7-DDE4-44FE-B365-1FEFCC0BFEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12FF96A7-DDE4-44FE-B365-1FEFCC0BFEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12FF96A7-DDE4-44FE-B365-1FEFCC0BFEA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{138C65B3-D172-4717-877E-B87FD195BA43}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{138C65B3-D172-4717-877E-B87FD195BA43}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{138C65B3-D172-4717-877E-B87FD195BA43}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{138C65B3-D172-4717-877E-B87FD195BA43}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {67869FBC-1AE0-4BB4-96FF-06A0D3416EAD}
+	EndGlobalSection
+EndGlobal
