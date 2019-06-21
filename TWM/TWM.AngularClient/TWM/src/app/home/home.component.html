@@ -19,11 +19,11 @@
               & Culture
             </strong>
           </h5>
-          <div *ngIf="openIdConnectService.userAvailable">
+          <div *ngIf="islooged">
             <a mdbBtn color="white" href="/dashboard" outline="true" mdbWavesEffect class="wow fadeInDown" data-wow-delay="0.4s">My Trips</a>
             <a mdbBtn color="white" href="/mycountries" outline="true" mdbWavesEffect class="wow fadeInDown" data-wow-delay="0.4s">My Countries</a>
           </div>
-          <div *ngIf="!openIdConnectService.userAvailable">
+          <div *ngIf="!islooged">
             <a mdbBtn color="white"  (click)="openIdConnectService.triggerSignIn()" outline="true" mdbWavesEffect class="wow fadeInDown" data-wow-delay="0.4s">Log In</a>
           </div>
         </div>

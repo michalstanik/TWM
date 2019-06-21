@@ -1,17 +1,20 @@
+import { WebStorageStateStore } from 'oidc-client';
+
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
   production: false,
-  apiUrl: 'https://localhost:44328/api/',
+  apiUrl: 'https://localhost:44328/api',
   openIdConnectSettings: {
     authority: 'https://localhost:44381/',
     client_id: 'tripwithmeclient',
     redirect_uri: 'https://localhost:4200/signin-oidc',
     scope: 'openid profile roles',
     response_type: 'id_token',
-    post_logout_redirect_uri: 'https://localhost:4200/'
+    post_logout_redirect_uri: 'https://localhost:4200/',
+    userStore: new WebStorageStateStore({ store: window.localStorage })
   }
 };
 

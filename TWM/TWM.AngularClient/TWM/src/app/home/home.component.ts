@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { OpenIdConnectService } from '../shared/services/open-id-connect.service';
 
@@ -8,6 +8,11 @@ import { OpenIdConnectService } from '../shared/services/open-id-connect.service
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
- 
-  constructor(private openIdConnectService: OpenIdConnectService) { }   
+
+  private islooged: boolean;
+  constructor(private openIdConnectService: OpenIdConnectService) { }
+
+  ngOnInit() {
+    this.islooged = this.openIdConnectService.userAvailable;
+  }
 }
