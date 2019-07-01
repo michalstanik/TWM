@@ -41,6 +41,12 @@ namespace TWM.Api
                 if (jsonOutputFormatter != null)
                 {
                     jsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.tripwme.tripwithstats+json");
+
+
+                    jsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.tripwme.continents+json");
+                    jsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.tripwme.continentswithregions+json");
+                    jsonOutputFormatter.SupportedMediaTypes.Add("application/vnd.tripwme.continentswithregionsandcountries+json");
+
                 }
                 var jsonInputFormatter = setupAction.InputFormatters.OfType<JsonInputFormatter>().FirstOrDefault();
                 if (jsonInputFormatter != null)
@@ -80,6 +86,7 @@ namespace TWM.Api
             services.AddTransient<TripWMeSeeder>();
             services.AddScoped<ITripRepository, TripRepository>();
             services.AddScoped<IGeoEntitiesRepository, GeoEntitiesRepository>();
+            services.AddScoped<IGeoAdminRepository, GeoAdminRepository>();
             services.AddScoped<IUserInfoService, UserInfoService>();
 
             // register an IHttpContextAccessor so we can access the current HttpContext in services by injecting it
