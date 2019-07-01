@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
+using TWM.Data.Domain.Admin;
 using TWM.Data.Domain.Stops;
 
 namespace TWM.Data.Domain.GeoEntities
 {
-    public  class Location
+    public  class Location : AuditableEntity
     {
         public Location()
         {

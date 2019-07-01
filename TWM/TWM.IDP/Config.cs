@@ -67,15 +67,10 @@ namespace TWM.IDP
                     AllowedGrantTypes = GrantTypes.Implicit,
                     RequireConsent = false,
                     AllowAccessTokensViaBrowser = true,
-                    RedirectUris =new List<string>
-                    {
-                        "https://localhost:4200/signin-oidc"
-                    },
                     AccessTokenLifetime = 180,
-                    PostLogoutRedirectUris = new[]
-                    {
-                        "https://localhost:4200/"
-                    },
+                    RedirectUris =           { "https://localhost:4200/assets/oidc-login-redirect.html" },
+                    PostLogoutRedirectUris = { "https://localhost:4200/?postLogout=true" },
+                    AllowedCorsOrigins =     { "https://localhost:4200/" },
                     AllowedScopes = new []
                     {
                         IdentityServerConstants.StandardScopes.OpenId,

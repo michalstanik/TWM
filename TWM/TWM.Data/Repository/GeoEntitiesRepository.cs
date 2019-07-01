@@ -34,6 +34,27 @@ namespace TWM.Data.Repository
                 .ToDictionaryAsync(p => p.Alpha2Code, p => p.AreaLevelAssessment);
         }
 
+        public async Task<ICollection<Country>> GetCountiresWithAssesmentForUser(string userId)
+        {
+            var query = await _context.UserCountryAssessment.Where(u => u.TUserId == userId).ToListAsync();
+
+            var listofCountriesToBeReturned = new List<Country>();
+
+            foreach (var cntry in query)
+            {
+                var tempCountry = _context.Country
+                    .Include(r => r.Region)
+                    .Where(c => c.Id == cntry.CountryId).SingleOrDefault();
+
+                if(tempCountry != null && listofCountriesToBeReturned.Where(d => d.Id == cntry.CountryId).Count() == 0)
+                {
+                    listofCountriesToBeReturned.Add(tempCountry);
+                }
+            }
+
+            return listofCountriesToBeReturned;
+        }
+
         public async Task<ICollection<Country>> GetCountriesForAllTrips()
         {
             var query = _context.Trip;

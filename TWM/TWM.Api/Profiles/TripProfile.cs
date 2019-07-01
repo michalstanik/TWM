@@ -7,10 +7,6 @@ namespace TWM.Api.Profiles
         public TripProfile()
         {
             CreateMap<Data.Domain.Trips.Trip, Business.Models.Trips.TripWithStatsModel>();
-
-            CreateMap<Data.Domain.GeoEntities.Country, Business.Models.GeoEntities.CountryModelWithAssesments>();
-            CreateMap<Data.Domain.GeoEntities.Country, Business.Models.GeoEntities.CountryModel>();
-
         }   
     }
 }

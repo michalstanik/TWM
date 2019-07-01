@@ -12,6 +12,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Serialization;
+using TWM.Api.Services;
+using TWM.CoreHelpers.Interfaces;
 using TWM.Data;
 using TWM.Data.Repository;
 using TWM.Data.RepositoryInterfaces;
@@ -78,17 +80,17 @@ namespace TWM.Api
             services.AddTransient<TripWMeSeeder>();
             services.AddScoped<ITripRepository, TripRepository>();
             services.AddScoped<IGeoEntitiesRepository, GeoEntitiesRepository>();
-
+            services.AddScoped<IUserInfoService, UserInfoService>();
 
             // register an IHttpContextAccessor so we can access the current HttpContext in services by injecting it
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();        
 
-            //services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
-            //    .AddIdentityServerAuthentication(options =>
-            //   {
-            //       options.Authority = "https://localhost:44381";
-            //       options.ApiName = "tripwithmeapi";
-            //   });
+            services.AddAuthentication(IdentityServerAuthenticationDefaults.AuthenticationScheme)
+                .AddIdentityServerAuthentication(options =>
+                {
+                    options.Authority = "https://localhost:8001";
+                    options.ApiName = "tripwithmeapi";
+                });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env)

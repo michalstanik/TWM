@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TWM.Data.Domain.Admin;
 using TWM.Data.Domain.Stops;
 using TWM.Data.Domain.Users;
 
 namespace TWM.Data.Domain.Trips
 {
-    public class Trip
+    public class Trip : AuditableEntity
     {
         public Trip()
         {

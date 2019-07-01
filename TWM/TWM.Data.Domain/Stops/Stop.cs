@@ -1,10 +1,11 @@
 ﻿using System;
+using TWM.Data.Domain.Admin;
 using TWM.Data.Domain.GeoEntities;
 using TWM.Data.Domain.Trips;
 
 namespace TWM.Data.Domain.Stops
 {
-    public class Stop
+    public class Stop : AuditableEntity
     {
         public int Id { get; set; }
         public string StopName { get; set; }

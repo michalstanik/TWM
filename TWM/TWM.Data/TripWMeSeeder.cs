@@ -45,6 +45,8 @@ namespace TWM.Data
             var countryCambodia = _context.Country.Where(c => c.Alpha3Code == "KHM").FirstOrDefault();
             var countryVietnam = _context.Country.Where(c => c.Alpha3Code == "VNM").FirstOrDefault();
             var countryUK = _context.Country.Where(c => c.Alpha3Code == "GBR").FirstOrDefault();
+            var countryIndia = _context.Country.Where(c => c.Alpha3Code == "IND").FirstOrDefault();
+            var countryCaboVerde = _context.Country.Where(c => c.Alpha3Code == "CPV").FirstOrDefault();
 
             _context.TripType.AddRange(
                         new TripType()
@@ -108,7 +110,22 @@ namespace TWM.Data
                              AreaLevelAssessment = 60,
                              Country = countryUK,
                              CountryKnowledgeType = UserCountryAssessment.CountryVisitType.BussinessTrip
+                         },
+                         new UserCountryAssessment()
+                         {
+                             TUser = user1,
+                             AreaLevelAssessment = 30,
+                             Country = countryIndia,
+                             CountryKnowledgeType = UserCountryAssessment.CountryVisitType.RealTrip
+                         },
+                         new UserCountryAssessment()
+                         {
+                             TUser = user1,
+                             AreaLevelAssessment = 60,
+                             Country = countryCaboVerde,
+                             CountryKnowledgeType = UserCountryAssessment.CountryVisitType.RealTrip
                          }
+
                     );
 
             await _context.SaveChangesAsync();
@@ -116,21 +133,24 @@ namespace TWM.Data
             var locationTypeDrink = new LocationType() { Name = LocationType.LocType.Drink };
             var locationTypeWonderOdWorld = new LocationType() { Name = LocationType.LocType.WonderOfWorld };
 
-            var location1 = new Location() { Name = "Location 1", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 1", Country = country1, LocationType = locationTypeDrink };
-            var location2 = new Location() { Name = "Location 2", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 2", Country = country1, LocationType = locationTypeWonderOdWorld };
-            var location3 = new Location() { Name = "Location 3", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 3", Country = country2, LocationType = locationTypeWonderOdWorld };
-            var location4 = new Location() { Name = "Location 4", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 4", Country = country2, LocationType = locationTypeDrink };
+            var location1 = new Location() { Name = "Location 1", CreatedBy = "system", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 1", Country = country1, LocationType = locationTypeDrink };
+            var location2 = new Location() { Name = "Location 2", CreatedBy = "system", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 2", Country = country1, LocationType = locationTypeWonderOdWorld };
+            var location3 = new Location() { Name = "Location 3", CreatedBy = "system", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 3", Country = country2, LocationType = locationTypeWonderOdWorld };
+            var location4 = new Location() { Name = "Location 4", CreatedBy = "system", Latitude = 5435.4554, Longitude = 4535.6542, Description = "Description 4", Country = country2, LocationType = locationTypeDrink };
 
             _context.Trip.AddRange(
                 new Trip()
                 {
                     Name = "My First Asian Trip",
-                    Stops = new List<Stop>()
+                    CreatedBy = "system",
+                    Stops = new List<Stop>()                  
                     {
                         new Stop()
                         {
+                            CreatedBy = "system",
                             Location = new Location(){
                                 Country = countryThailand,
+                                CreatedBy = "system",
                                 Latitude = 13.75,
                                 Longitude = 100.516667,
                                 Name = "Tai Hotel",
@@ -145,8 +165,10 @@ namespace TWM.Data
                         },
                         new Stop()
                         {
+                            CreatedBy = "system",
                             Location = new Location(){
                                 Country = countryCambodia,
+                                CreatedBy = "system",
                                 Latitude = 13.75,
                                 Longitude = 100.516667,
                                 Name = "Angkor Wat",
@@ -161,8 +183,10 @@ namespace TWM.Data
                         },
                         new Stop()
                         {
+                            CreatedBy = "system",
                             Location = new Location(){
                                 Country = countryVietnam,
+                                CreatedBy = "system",
                                 Latitude = 13.75,
                                 Longitude = 100.516667,
                                 Name = "Cho Chi Min",
@@ -187,10 +211,12 @@ namespace TWM.Data
                 new Trip()
                 {
                     Name = "Trip 2",
+                    CreatedBy = "system",
                     Stops = new List<Stop>()
                     {
                         new Stop()
                         {
+                            CreatedBy = "system",
                             Location = location2,
                             Departure = DateTime.Today.AddDays(10),
                             Arrival = DateTime.Today.AddDays(5),
@@ -200,6 +226,7 @@ namespace TWM.Data
                         },
                         new Stop()
                         {
+                            CreatedBy = "system",
                             Location = location4,
                             Departure = DateTime.Today.AddDays(10),
                             Arrival = DateTime.Today.AddDays(5),
@@ -217,10 +244,12 @@ namespace TWM.Data
                 new Trip()
                 {
                     Name = "Trip 3",
+                    CreatedBy = "system",
                     Stops = new List<Stop>()
                     {
                         new Stop()
                         {
+                            CreatedBy = "system",
                             Location = location1,
                             Departure = DateTime.Today.AddDays(10),
                             Arrival = DateTime.Today.AddDays(5),
@@ -230,6 +259,7 @@ namespace TWM.Data
                         },
                         new Stop()
                         {
+                            CreatedBy = "system",
                             Location = location2,
                             Departure = DateTime.Today.AddDays(10),
                             Arrival = DateTime.Today.AddDays(5),

@@ -1,13 +1,17 @@
 // auth.guard.ts
 import { Injectable } from '@angular/core';
 import { Router, CanActivate } from '@angular/router';
-import { OpenIdConnectService } from './shared/services/open-id-connect.service';
-import { AuthService } from './core/auth.service';
+import { AuthService } from './auth.service';
 
 
 @Injectable()
-export class AuthGuard implements CanActivate {
-  constructor(private _authService: AuthService, private router: Router) { }
+export class AuthGuardService implements CanActivate {
+
+  _authService: AuthService
+
+  constructor(private authService: AuthService, private router: Router) {
+    this._authService = authService;
+  }
 
   canActivate() {
 

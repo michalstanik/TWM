@@ -31,7 +31,7 @@ import { AuthGuard } from '../auth.guard';
         MyCountryMapComponent
     ],
     exports: [],
-  providers: [OpenIdConnectService, AuthGuard, MyCountryService]
+  providers: [MyCountryService]
 })
 
 export class MyCountriesModule { }

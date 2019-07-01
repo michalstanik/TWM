@@ -18,7 +18,7 @@ export class MyCountryListComponent implements OnInit {
     constructor(private myCountryService: MyCountryService) { }
 
     ngOnInit() {
-        this.myCountryService.GetCountriesForAllTripsWithAssessment().subscribe(myCountries => { this.myCountries = myCountries });
+      this.myCountryService.GetCountriesForUserWithAssessments().subscribe(myCountries => { this.myCountries = myCountries });
     }
 
 }

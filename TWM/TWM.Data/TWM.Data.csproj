@@ -13,6 +13,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\TWM.CoreHelpers\TWM.CoreHelpers.csproj" />
     <ProjectReference Include="..\TWM.Data.Domain\TWM.Data.Domain.csproj" />
   </ItemGroup>
 

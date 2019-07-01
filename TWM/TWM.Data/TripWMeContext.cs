@@ -1,8 +1,10 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using TWM.CoreHelpers.Interfaces;
 using TWM.Data.DataAuditFuture;
 using TWM.Data.Domain.Admin;
 using TWM.Data.Domain.GeoEntities;
@@ -15,13 +17,17 @@ namespace TWM.Data
 {
     public class TripWMeContext : DbContext
     {
+
+        private readonly IUserInfoService _userInfoService;
+
         public TripWMeContext()
         {
 
         }
-        public TripWMeContext(DbContextOptions<TripWMeContext> options) : base(options)
+        public TripWMeContext(DbContextOptions<TripWMeContext> options, IUserInfoService userInfoService) : base(options)
         {
-
+            // userInfoService is a required argument
+            _userInfoService = userInfoService ?? throw new ArgumentNullException(nameof(userInfoService));
         }
 
         //Trips
@@ -64,6 +70,27 @@ namespace TWM.Data
 
             var result = await base.SaveChangesAsync(true, cancellationToken);
             await OnAfterSaveChanges(auditEntries);
+
+            //TODO: Refactor to the separate method
+            // get added or updated entries
+            var addedOrUpdatedEntries = ChangeTracker.Entries()
+                    .Where(x => (x.State == EntityState.Added || x.State == EntityState.Modified));
+
+            // fill out the audit fields
+            foreach (var entry in addedOrUpdatedEntries)
+            {
+                var entity = entry.Entity as AuditableEntity;
+
+                if (entry.State == EntityState.Added)
+                {
+                    entity.CreatedBy = _userInfoService.UserId;
+                    entity.CreatedOn = DateTime.UtcNow;
+                }
+
+                entity.UpdatedBy = _userInfoService.UserId;
+                entity.UpdatedOn = DateTime.UtcNow;
+            }
+
             return result;
         }
 

@@ -16,26 +16,32 @@ export class MyCountryService extends BaseService {
     super();
   }
 
-    getCountriesForTrip(id: number): Observable<TripCountry> {
-      return this.http.get<TripCountry>(`${this.apiUrl}/geo/GetCountriesForTrip/' + id`)
-            .pipe(catchError(this.handleError<TripCountry>('getCountriesForTrip')))
-    }
+  getCountriesForTrip(id: number): Observable<TripCountry> {
+    return this.http.get<TripCountry>(`${this.apiUrl}/geo/GetCountriesForTrip/' + id`)
+      .pipe(catchError(this.handleError<TripCountry>('getCountriesForTrip')))
+  }
 
-    GetCountriesForAllTrips(): Observable<TripCountry[]> {
-      return this.http.get<TripCountry[]>(`${this.apiUrl}/geo/GetCountriesForAllTrips/`)
-            .pipe(catchError(this.handleError<TripCountry[]>('GetCountriesForAllTrips')))
-    }
+  GetCountriesForAllTrips(): Observable<TripCountry[]> {
+    return this.http.get<TripCountry[]>(`${this.apiUrl}/geo/GetCountriesForAllTrips/`)
+      .pipe(catchError(this.handleError<TripCountry[]>('GetCountriesForAllTrips')))
+  }
 
-    GetCountriesForAllTripsWithAssessment(): Observable<TripCountryWithAssessment[]> {
-      return this.http.get<TripCountryWithAssessment[]>(`${this.apiUrl}/geo/GetCountriesForAllTripsWithAssessments/`)
-            .pipe(catchError(this.handleError<TripCountryWithAssessment[]>('GetCountriesForAllTripsWithAssessment')))
-    }
+  GetCountriesForAllTripsWithAssessment(): Observable<TripCountryWithAssessment[]> {
+    return this.http.get<TripCountryWithAssessment[]>(`${this.apiUrl}/geo/GetCountriesForAllTripsWithAssessments/`)
+      .pipe(catchError(this.handleError<TripCountryWithAssessment[]>('GetCountriesForAllTripsWithAssessment')))
+  }
 
-    private handleError<T>(operation = 'operation', result?: T) {
-        return (error: any): Observable<T> => {
-            console.error(error);
-            return of(result as T);
-        }
+  GetCountriesForUserWithAssessments(): Observable<TripCountryWithAssessment[]> {
+    return this.http.get<TripCountryWithAssessment[]>(`${this.apiUrl}/geo/GetCountriesForUserWithAssessments/`)
+      .pipe(catchError(this.handleError<TripCountryWithAssessment[]>('GetCountriesForUserWithAssessments')))
+  }
+
+
+  private handleError<T>(operation = 'operation', result?: T) {
+    return (error: any): Observable<T> => {
+      console.error(error);
+      return of(result as T);
     }
+  }
 
 }

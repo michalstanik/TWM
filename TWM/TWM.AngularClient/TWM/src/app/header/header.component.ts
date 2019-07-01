@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 
 import { OpenIdConnectService } from '../shared/services/open-id-connect.service';
+import { AuthService } from '../core/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -10,9 +11,19 @@ import { OpenIdConnectService } from '../shared/services/open-id-connect.service
 
 export class HeaderComponent {
 
-  constructor(private openIdConnectService: OpenIdConnectService) {
+  constructor(
+    private _authService: AuthService
+  ) {
 
   }
 
+  logout() {
+    this._authService.logout();
+  }
+
+
+  isLoggedIn() {
+    return this._authService.isLoggedIn();
+  }
 
 }

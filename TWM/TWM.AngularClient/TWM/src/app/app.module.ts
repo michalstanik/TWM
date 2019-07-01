@@ -19,6 +19,9 @@ import { OpenIdConnectService } from './shared/services/open-id-connect.service'
 
 import { MDBBootstrapModulesPro, MDBSpinningPreloader } from 'ng-uikit-pro-standard';
 import { EnsureAcceptHeaderInterceptor } from './shared/services/ensure-accept-header-interceptor';
+import { CoreModule } from './core/core.module';
+import { AuthGuard } from './auth.guard';
+import { AddAuthorizationHeaderInterceptor } from './core/add-authorization-header-interceptor';
 
 
 
@@ -33,6 +36,7 @@ import { EnsureAcceptHeaderInterceptor } from './shared/services/ensure-accept-h
     SigninOidcComponent
   ],
   imports: [
+    CoreModule,
     MyCountriesModule,
     BrowserModule,
     FormsModule,
@@ -40,9 +44,15 @@ import { EnsureAcceptHeaderInterceptor } from './shared/services/ensure-accept-h
     BrowserAnimationsModule,
     MDBBootstrapModulesPro.forRoot(),
     routing
+    
 
   ],
   providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AddAuthorizationHeaderInterceptor,
+      multi: true
+    },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: EnsureAcceptHeaderInterceptor,
@@ -58,7 +68,7 @@ import { EnsureAcceptHeaderInterceptor } from './shared/services/ensure-accept-h
     //  useClass: HandleHttpErrorInterceptor,
     //  multi: true,
     //},
-    MDBSpinningPreloader, OpenIdConnectService],
+    MDBSpinningPreloader],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
