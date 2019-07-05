@@ -14,16 +14,18 @@ namespace TWM.Api.Controllers
 {
     [Route("api/geo/")]
     [ApiController]
-    [Authorize]
+    //[Authorize]
     public class GeoController : ControllerBase
     {
         private readonly IGeoEntitiesRepository _geoRepository;
+        private readonly IGeoAdminRepository _geoAdminRepository;
         private readonly IMapper _mapper;
         private readonly IUserInfoService _userInfoService;
 
-        public GeoController(IGeoEntitiesRepository geoRepository, IMapper mapper, IUserInfoService userInfoService)
+        public GeoController(IGeoEntitiesRepository geoRepository,IGeoAdminRepository geoAdminRepository, IMapper mapper, IUserInfoService userInfoService)
         {
             _geoRepository = geoRepository;
+            _geoAdminRepository = geoAdminRepository;
             _mapper = mapper;
             _userInfoService = userInfoService;
         }
@@ -77,6 +79,46 @@ namespace TWM.Api.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
+
+        [HttpGet("GetCountriesForUserByContinent", Name = "GetCountriesForUserByContinent")]
+        public async Task<ActionResult<List<ContinentWithRegionsAndCountriesModel>>> GetCountriesForUserByContinent()
+        {
+            try
+            {
+                var continentsFromRepo = await _geoAdminRepository.GetContinents(true, false);
+                var mappedContinents
+                    = _mapper.Map<List<ContinentWithRegionsAndCountriesModel>>(continentsFromRepo);
+                
+                var userCountries = await _geoRepository.GetCountiresWithAssesmentForUser(_userInfoService.UserId);
+                var mappedUserCountries =
+                    _mapper.Map<List<CountryModel>>(userCountries);
+
+                foreach (var userCountry in mappedUserCountries)
+                {
+                    foreach (var item in mappedContinents)
+                    {
+                        foreach (var region in item.Regions)
+                        {
+                            if(region.Name == userCountry.RegionName)
+                            {
+                                region.Countries.Add(userCountry);
+                            }
+                        }
+                    }
+                }
+
+                return mappedContinents;
+
+            }
+            catch (Exception)
+            {
+
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+
 
         [HttpGet("GetCountriesForAllTripsWithAssessments", Name = "GetCountriesForAllTripsWithAssessments")]
         public async Task<ActionResult<List<CountryModelWithAssesments>>> GetCountriesForAllTripsWithAssessments()

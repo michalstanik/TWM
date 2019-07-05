@@ -7,6 +7,7 @@ import { catchError } from 'rxjs/operators';
 import { TripCountry } from 'src/app/shared/models/country/trip-country.model';
 import { TripCountryWithAssessment } from 'src/app/shared/models/country/trip-country-with-assessment.model';
 import { BaseService } from 'src/app/shared/services/base.service';
+import { ContinentWithRegionsAndCountriesModel } from 'src/app/shared/models/country/continent-with-regions-and-countries.model';
 
 
 @Injectable()
@@ -36,6 +37,10 @@ export class MyCountryService extends BaseService {
       .pipe(catchError(this.handleError<TripCountryWithAssessment[]>('GetCountriesForUserWithAssessments')))
   }
 
+  GetCountriesForUserByContinent(): Observable<ContinentWithRegionsAndCountriesModel[]> {
+    return this.http.get<ContinentWithRegionsAndCountriesModel[]>(`${this.apiUrl}/geo/GetCountriesForUserByContinent/`)
+      .pipe(catchError(this.handleError<ContinentWithRegionsAndCountriesModel[]>('GetCountriesForUserByContinent')))
+  }
 
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {

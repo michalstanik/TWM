@@ -1,0 +1,24 @@
+
+<div class="container">
+  <div>
+    <mdb-icon fas icon="plane-departure"></mdb-icon><a>   Your Countries:</a>
+  </div>
+  <hr />
+  <div class="scrollbar scrollbar-info">
+    <div class="force-overflow">
+      <div *ngFor="let continent of myCountries">
+
+
+        <h5>{{continent.name}}</h5>
+        <div *ngFor="let region of continent.regions">
+          <a>{{region.name}}</a>
+          <div *ngFor="let country of region.countries">
+            <app-my-country-thumbnail [country]="country"></app-my-country-thumbnail>
+          </div>
+        </div>
+        <!--<app-my-country-thumbnail [country]="country"></app-my-country-thumbnail>-->
+      </div>
+    </div>
+  </div>
+</div>
+

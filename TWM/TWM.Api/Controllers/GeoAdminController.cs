@@ -27,21 +27,21 @@ namespace TWM.Api.Controllers
 
         [HttpGet("country")]
         [RequestHeaderMatchesMediaType("Accept", new[] { "application/vnd.tripwme.continents+json" })]
-        public async Task<IActionResult> GetAllContinents(bool includeRegions = false, bool includeCountries = false)
+        public async Task<IActionResult> GetAllContinents()
         {
             return await GetContinents<List<ContinentModel>>(false, false);
         }
 
         [HttpGet("country")]
         [RequestHeaderMatchesMediaType("Accept", new[] { "application/vnd.tripwme.continentswithregions+json" })]
-        public async Task<IActionResult> GetAllContinentsWithRegions(bool includeRegions = false, bool includeCountries = false)
+        public async Task<IActionResult> GetAllContinentsWithRegions()
         {
             return await GetContinents<List<ContinentWithRegionsModel>>(true, false);
         }
 
         [HttpGet("country")]
         [RequestHeaderMatchesMediaType("Accept", new[] { "application/vnd.tripwme.continentswithregionsandcountries+json" })]
-        public async Task<IActionResult> GetAllContinentsWithRegionsAndCountries(bool includeRegions = false, bool includeCountries = false)
+        public async Task<IActionResult> GetAllContinentsWithRegionsAndCountries()
         {
             return await GetContinents<List<ContinentWithRegionsAndCountriesModel>>(false, true);
         }

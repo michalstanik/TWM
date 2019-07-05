@@ -15,6 +15,7 @@ import { MyCountryMapComponent } from './my-country-map/my-country-map.component
 import { MyCountryService } from './shared/services/mycountry.service';
 import { OpenIdConnectService } from '../shared/services/open-id-connect.service';
 import { AuthGuard } from '../auth.guard';
+import { MyContinentListComponent } from './my-continents-list/my-continents-list.component';
 
 @NgModule({
     imports: [
@@ -27,6 +28,7 @@ import { AuthGuard } from '../auth.guard';
     declarations: [
         RootComponent,
         MyCountryListComponent,
+        MyContinentListComponent,
         MyCountryThumbnailComponent,
         MyCountryMapComponent
     ],
