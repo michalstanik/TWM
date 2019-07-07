@@ -6,17 +6,18 @@
   <hr />
   <div class="scrollbar scrollbar-info">
     <div class="force-overflow">
-      <div *ngFor="let continent of myCountries">
+      <div class="card bg-light trip-container" *ngFor="let continent of myCountries">
 
-
-        <h5>{{continent.name}}</h5>
-        <div *ngFor="let region of continent.regions">
-          <a>{{region.name}}</a>
+        <div class="card-header text-lg-center continent-header">
+              {{continent.name}}
+        </div>
+        <div *ngFor="let region of continent.regions" class="card trip-container">
+          <p *ngIf="region.countries && region.countries.length" class=" card-header">{{region.name}}</p>
           <div *ngFor="let country of region.countries">
             <app-my-country-thumbnail [country]="country"></app-my-country-thumbnail>
           </div>
         </div>
-        <!--<app-my-country-thumbnail [country]="country"></app-my-country-thumbnail>-->
+        
       </div>
     </div>
   </div>
