@@ -12,5 +12,6 @@ namespace TWM.Data.RepositoryInterfaces
         Task<Dictionary<string, long>> GetCountireAssesmentForUser(string userId);
 
         Task<ICollection<Country>> GetCountiresWithAssesmentForUser(string userId);
+        Task<int> GetTotlCountryNumberForRegionName(string regionName);
     }
 }

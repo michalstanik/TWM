@@ -16,6 +16,7 @@ import { MyCountryService } from './shared/services/mycountry.service';
 import { OpenIdConnectService } from '../shared/services/open-id-connect.service';
 import { AuthGuard } from '../auth.guard';
 import { MyContinentListComponent } from './my-continents-list/my-continents-list.component';
+import { RegionDetailsComponent } from './region-details/region-details.component';
 
 @NgModule({
     imports: [
@@ -30,7 +31,8 @@ import { MyContinentListComponent } from './my-continents-list/my-continents-lis
         MyCountryListComponent,
         MyContinentListComponent,
         MyCountryThumbnailComponent,
-        MyCountryMapComponent
+        MyCountryMapComponent,
+        RegionDetailsComponent
     ],
     exports: [],
   providers: [MyCountryService]

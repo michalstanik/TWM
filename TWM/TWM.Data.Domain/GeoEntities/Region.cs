@@ -13,6 +13,8 @@ namespace TWM.Data.Domain.GeoEntities
         public int? ContinentId { get; set; }
         public Continent Continent { get; set; }
 
+        public RegionStats Stats { get; set; }
+
         public List<Country> Countries { get; set; }
     }
 }

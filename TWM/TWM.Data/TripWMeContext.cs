@@ -42,6 +42,7 @@ namespace TWM.Data
         public DbSet<LocationType> LocationType { get; set; }
         public DbSet<Country> Country { get; set; }
         public DbSet<Region> Region { get; set; }
+        public DbSet<RegionStats> RegionStats { get; set; }
         public DbSet<Continent> Continent { get; set; }
 
         //Admin

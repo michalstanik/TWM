@@ -73,6 +73,18 @@ namespace TWM.Data.Repository
             return results;
         }
 
+        public async Task<int> GetTotlCountryNumberForRegionName(string regionName)
+        {
+            int countryCount = 0;
+            countryCount = await _context.Region
+                                    .Include(c => c.Countries)
+                                    .Where(r => r.Name == regionName)
+                                    .Select(t => t.Countries.Count)
+                                    .FirstOrDefaultAsync();
+
+            return countryCount;              
+        }
+
         private async Task<ICollection<Country>> ReturnCountriesBasedOnTripQuery(IQueryable<Trip> inputQuery)
         {
             var listOfTripsWithGraph = inputQuery.Include(i => i.Stops)

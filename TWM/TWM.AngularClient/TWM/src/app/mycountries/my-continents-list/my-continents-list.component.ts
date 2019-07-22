@@ -20,6 +20,9 @@ export class MyContinentListComponent implements OnInit {
 
   ngOnInit() {
     this.myCountryService.GetCountriesForUserByContinent().subscribe(myCountries => { this.myCountries = myCountries });
+    
   }
+
+  
 
 }

@@ -1,12 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using TWM.Business.Models.GeoEntities;
-using TWM.CoreHelpers.Attributes;
 using TWM.CoreHelpers.Interfaces;
 using TWM.Data.RepositoryInterfaces;
 
@@ -100,9 +98,12 @@ namespace TWM.Api.Controllers
                     {
                         foreach (var region in item.Regions)
                         {
+                            region.TotalCountryCount = await _geoRepository.GetTotlCountryNumberForRegionName(region.Name);
+
                             if(region.Name == userCountry.RegionName)
                             {
                                 region.Countries.Add(userCountry);
+                                region.VisitedCountryCount += 1; 
                             }
                         }
                     }
