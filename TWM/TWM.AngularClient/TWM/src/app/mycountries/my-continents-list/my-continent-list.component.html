@@ -9,7 +9,7 @@
       <div class="card bg-light continent-container" *ngFor="let continent of myCountries">
 
         <div class="card-header text-lg-center continent-header">
-              {{continent.name}}
+          {{continent.name}}  {{continent.visitetCountriesOnContinent}}/{{continent.statsCountryCount}}
         </div>
         <div *ngFor="let region of continent.regions" class="card trip-container">
           <p class=" card-header region-name btn">

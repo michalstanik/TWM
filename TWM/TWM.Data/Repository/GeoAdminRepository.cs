@@ -21,7 +21,7 @@ namespace TWM.Data.Repository
 
         public async Task<ICollection<Continent>> GetContinents(bool includeRegions = false, bool includeCountries = false)
         {
-            IQueryable<Continent> query = _context.Continent;
+            IQueryable<Continent> query = _context.Continent.Include(c => c.Stats);
 
             if(includeRegions)
             {

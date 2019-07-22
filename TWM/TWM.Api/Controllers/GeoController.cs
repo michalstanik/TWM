@@ -96,19 +96,21 @@ namespace TWM.Api.Controllers
                 {
                     foreach (var item in mappedContinents)
                     {
+                        item.VisitetCountriesOnContinent = 0;
+
                         foreach (var region in item.Regions)
                         {                    
                             if(region.Name == userCountry.RegionName)
                             {
                                 region.Countries.Add(userCountry);
-                                region.VisitedCountryCount += 1; 
+                                region.VisitedCountryCount += 1;
+                                item.VisitetCountriesOnContinent += 1;
                             }
                         }
                     }
                 }
 
                 return mappedContinents;
-
             }
             catch (Exception)
             {
