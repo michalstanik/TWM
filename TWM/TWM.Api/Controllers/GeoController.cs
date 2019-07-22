@@ -97,10 +97,7 @@ namespace TWM.Api.Controllers
                     foreach (var item in mappedContinents)
                     {
                         foreach (var region in item.Regions)
-                        {
-                            //region.TotalCountryCount = await _geoRepository.GetTotlCountryNumberForRegionName(region.Name);
-                            
-
+                        {                    
                             if(region.Name == userCountry.RegionName)
                             {
                                 region.Countries.Add(userCountry);

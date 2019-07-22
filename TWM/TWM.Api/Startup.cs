@@ -142,7 +142,10 @@ namespace TWM.Api
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 var statsSeeder = scope.ServiceProvider.GetService<TripWMeStatsSeeder>();
+
                 statsSeeder.SeedRegionStats().Wait();
+
+                statsSeeder.SeedContinentStats().Wait();
             }
         }
     }

@@ -44,6 +44,7 @@ namespace TWM.Data
         public DbSet<Region> Region { get; set; }
         public DbSet<RegionStats> RegionStats { get; set; }
         public DbSet<Continent> Continent { get; set; }
+        public DbSet<ContinentStats> ContinentStats { get; set; }
 
         //Admin
         public DbSet<AuditLog> AuditLog { get; set; }
