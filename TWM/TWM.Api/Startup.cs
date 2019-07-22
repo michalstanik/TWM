@@ -84,6 +84,7 @@ namespace TWM.Api
 
             // register the repository
             services.AddTransient<TripWMeSeeder>();
+            services.AddTransient<TripWMeStatsSeeder>();
             services.AddScoped<ITripRepository, TripRepository>();
             services.AddScoped<IGeoEntitiesRepository, GeoEntitiesRepository>();
             services.AddScoped<IGeoAdminRepository, GeoAdminRepository>();
@@ -136,6 +137,12 @@ namespace TWM.Api
                     var seeder = scope.ServiceProvider.GetService<TripWMeSeeder>();
                     seeder.Seed(recreateDbOption).Wait();
                 }
+            }
+
+            using (var scope = app.ApplicationServices.CreateScope())
+            {
+                var statsSeeder = scope.ServiceProvider.GetService<TripWMeStatsSeeder>();
+                statsSeeder.SeedRegionStats().Wait();
             }
         }
     }

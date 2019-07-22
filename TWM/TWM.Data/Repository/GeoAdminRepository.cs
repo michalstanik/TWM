@@ -25,7 +25,7 @@ namespace TWM.Data.Repository
 
             if(includeRegions)
             {
-                query = query.Include(t => t.Regions);
+                query = query.Include(t => t.Regions).ThenInclude(c => c.Stats);
             }
 
             if(includeCountries)

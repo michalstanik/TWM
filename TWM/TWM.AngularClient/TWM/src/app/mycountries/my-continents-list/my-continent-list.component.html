@@ -14,7 +14,7 @@
         <div *ngFor="let region of continent.regions" class="card trip-container">
           <p class=" card-header region-name btn">
             <!--*ngIf="region.countries && region.countries.length"-->
-            {{region.name}}  {{region.visitedCountryCount}}/{{region.totalCountryCount}}
+            {{region.name}}  {{region.visitedCountryCount}}/{{region.statsCountryCount}}
           </p>
           <div *ngFor="let country of region.countries">
             <app-my-country-thumbnail [country]="country"></app-my-country-thumbnail>
