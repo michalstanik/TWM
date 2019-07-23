@@ -1,5 +1,5 @@
-
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 //Services
 import { MyCountryService } from '../shared/services/mycountry.service';
@@ -16,13 +16,13 @@ export class MyContinentListComponent implements OnInit {
 
   myCountries: ContinentWithRegionsAndCountriesModel[];
 
-  constructor(private myCountryService: MyCountryService) { }
+  constructor(private myCountryService: MyCountryService, private router: Router) { }
 
   ngOnInit() {
     this.myCountryService.GetCountriesForUserByContinent().subscribe(myCountries => { this.myCountries = myCountries });
-    
   }
 
-  
-
+  navigateToRegion(id) {
+    this.router.navigate(['/mycountries/regions',id]);
+  }
 }

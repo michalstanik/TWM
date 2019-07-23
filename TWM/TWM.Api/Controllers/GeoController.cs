@@ -96,7 +96,7 @@ namespace TWM.Api.Controllers
                 {
                     foreach (var item in mappedContinents)
                     {
-                        item.VisitetCountriesOnContinent = 0;
+                        
 
                         foreach (var region in item.Regions)
                         {                    
